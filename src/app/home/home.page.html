@@ -1,0 +1,361 @@
+<ion-content [fullscreen]="true" class="professional-page">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-background">
+      <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-text">
+
+        <h1 class="hero-title">
+          <div class="hero-name-container">
+            <span class="hero-name">Eduardo França</span>
+            <span class="hero-role">Desenvolvedor FullStack</span>
+          </div>
+          <span class="hero-subtitle-main">Transformando ideias em</span>
+          <span class="hero-highlight">soluções digitais</span>
+        </h1>
+
+        <p class="hero-description">
+          Especialista em desenvolvimento de aplicações web e mobile usando as mais modernas tecnologias.
+          Cursando <strong>{{curso}}</strong> e apaixonado por criar experiências digitais excepcionais.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">{{anosExperiencia}}+</span>
+            <span class="stat-label">Anos de Experiência</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">{{projetosConcluidos}}+</span>
+            <span class="stat-label">Projetos Concluídos</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">5+</span>
+            <span class="stat-label">Tecnologias</span>
+          </div>
+        </div>
+
+
+        <div class="hero-location">
+          <ion-icon name="location-outline"></ion-icon>
+          <span>{{localizacao}}</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills-section">
+    <div class="container">
+      <h2 class="section-title">Tecnologias & Habilidades</h2>
+      <p class="section-subtitle">Domínio completo do ecossistema de desenvolvimento moderno</p>
+
+      <!-- Filtros de Categoria -->
+      <div class="skills-filter">
+        <button
+          class="filter-btn"
+          [class.active]="selectedCategory === 'all'"
+          (click)="filterSkills('all')">
+          Todas
+        </button>
+        <button
+          class="filter-btn"
+          [class.active]="selectedCategory === 'frontend'"
+          (click)="filterSkills('frontend')">
+          Frontend
+        </button>
+        <button
+          class="filter-btn"
+          [class.active]="selectedCategory === 'backend'"
+          (click)="filterSkills('backend')">
+          Backend
+        </button>
+        <button
+          class="filter-btn"
+          [class.active]="selectedCategory === 'mobile'"
+          (click)="filterSkills('mobile')">
+          Mobile
+        </button>
+      </div>
+
+      <div class="skills-grid">
+        <div
+          class="skill-card"
+          *ngFor="let skill of filteredSkills; let i = index"
+          [class.animate-in]="skill.visible"
+          [class.animate-out]="skill.animateOut"
+          (mouseenter)="onSkillHover(skill)"
+          (mouseleave)="onSkillLeave(skill)">
+
+          <div class="skill-header">
+            <div class="skill-icon" [style.background]="skill.gradient">
+              <ion-icon [name]="skill.icon"></ion-icon>
+            </div>
+            <div class="skill-level-badge">
+              <span>{{skill.level}}%</span>
+            </div>
+          </div>
+
+          <div class="skill-content">
+            <h3>{{skill.title}}</h3>
+            <p class="skill-description">{{skill.description}}</p>
+
+            <div class="skill-technologies">
+              <span
+                class="tech-tag"
+                *ngFor="let tech of skill.technologies">
+                {{tech}}
+              </span>
+            </div>
+
+            <div class="skill-level">
+              <div class="skill-bar">
+                <div
+                  class="skill-progress"
+                  [style.background]="skill.gradient">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section Divider -->
+  <div class="section-divider">
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- Services Section -->
+  <section class="services-section">
+    <div class="container">
+      <h2 class="section-title">Serviços Oferecidos</h2>
+      <p class="section-subtitle">Soluções completas para seu negócio digital</p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <ion-icon name="phone-portrait"></ion-icon>
+          </div>
+          <h3>Desenvolvimento Mobile</h3>
+          <p>Aplicações híbridas e nativas usando Ionic e Capacitor, garantindo performance e experiência nativa.</p>
+          <ul class="service-features">
+            <li>Apps iOS e Android</li>
+            <li>PWA (Progressive Web App)</li>
+            <li>Integração com APIs</li>
+            <li>Publicação nas stores</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <ion-icon name="desktop"></ion-icon>
+          </div>
+          <h3>Desenvolvimento Web</h3>
+          <p>Sistemas web responsivos e modernos usando Angular e as melhores práticas de desenvolvimento.</p>
+          <ul class="service-features">
+            <li>SPA (Single Page Application)</li>
+            <li>Design Responsivo</li>
+            <li>SEO Otimizado</li>
+            <li>Performance Avançada</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <ion-icon name="settings"></ion-icon>
+          </div>
+          <h3>APIs & Backend</h3>
+          <p>Desenvolvimento de APIs robustas e escaláveis usando Node.js, NestJS e Java.</p>
+          <ul class="service-features">
+            <li>APIs RESTful</li>
+            <li>Autenticação JWT</li>
+            <li>Integração com Bancos</li>
+            <li>Documentação Swagger</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Divider -->
+  <div class="section-divider">
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2 class="section-title">Sobre Mim</h2>
+          <p class="about-description">
+            Olá! Sou {{nome}}, um Desenvolvedor FullStack Junior apaixonado por tecnologia e inovação.
+            Atualmente cursando {{curso}} e com expertise em Ionic, Angular, NestJS, Node.js e Java,
+            transformo ideias em soluções digitais robustas e escaláveis.
+          </p>
+          <p class="about-description">
+            Natural de {{localizacao}}, minha abordagem combina conhecimento técnico sólido com foco na experiência
+            do usuário, sempre buscando as melhores práticas e tecnologias mais recentes
+            do mercado. Estou sempre em busca de novos desafios e oportunidades de crescimento.
+          </p>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <h3>{{anosExperiencia}}+</h3>
+              <p>Anos de Experiência</p>
+            </div>
+            <div class="stat-item">
+              <h3>{{projetosConcluidos}}+</h3>
+              <p>Projetos Concluídos</p>
+            </div>
+            <div class="stat-item">
+              <h3>5+</h3>
+              <p>Tecnologias Dominadas</p>
+            </div>
+            <div class="stat-item">
+              <h3>100%</h3>
+              <p>Dedicação aos Projetos</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <div class="profile-card">
+            <div class="profile-avatar">
+              <!-- Campo para foto - substitua o src pela sua foto -->
+              <img src="assets/images/eduardo-foto.jpg" alt="Eduardo França" class="profile-photo"
+                   onError="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <ion-icon name="person" class="profile-icon-fallback"></ion-icon>
+            </div>
+            <h3>{{nome}}</h3>
+            <p>Desenvolvedor FullStack & Estudante de Engenharia de Software</p>
+            <p class="location-info">
+              <ion-icon name="location-outline"></ion-icon>
+              {{localizacao}}
+            </p>
+            <div class="tech-badges">
+              <span class="badge">Ionic</span>
+              <span class="badge">Angular</span>
+              <span class="badge">NestJS</span>
+              <span class="badge">Node.js</span>
+              <span class="badge">Java</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Divider -->
+  <div class="section-divider">
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <h2 class="section-title">Vamos Trabalhar Juntos?</h2>
+      <p class="section-subtitle">Pronto para transformar sua ideia em realidade digital</p>
+
+      <div class="contact-content">
+
+        <div class="whatsapp-section">
+          <div class="whatsapp-card">
+            <div class="whatsapp-icon">
+              <ion-icon name="logo-whatsapp"></ion-icon>
+            </div>
+            <h3>Fale Comigo no WhatsApp</h3>
+            <p>Vamos conversar sobre seu projeto! Clique no botão abaixo para iniciar nossa conversa.</p>
+            <ion-button
+              expand="block"
+              class="whatsapp-button"
+              (click)="openWhatsApp()">
+              <ion-icon name="logo-whatsapp" slot="start"></ion-icon>
+              Conversar no WhatsApp
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-section footer-about">
+          <h3>{{nome}}</h3>
+          <p>Desenvolvedor FullStack & Estudante de Engenharia de Software</p>
+          <p class="footer-description">Transformando ideias em soluções digitais inovadoras com foco em qualidade e performance.</p>
+          <div class="footer-location">
+            <ion-icon name="location-outline"></ion-icon>
+            <span>{{localizacao}}</span>
+          </div>
+        </div>
+
+        <div class="footer-section footer-services">
+          <h4>Serviços</h4>
+          <ul>
+            <li>Desenvolvimento Web</li>
+            <li>Aplicações Mobile</li>
+            <li>APIs RESTful</li>
+          </ul>
+        </div>
+
+        <div class="footer-section footer-tech">
+          <h4>Tecnologias</h4>
+          <div class="tech-tags">
+            <span class="tech-tag">Ionic</span>
+            <span class="tech-tag">Angular</span>
+            <span class="tech-tag">NestJS</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Java</span>
+          </div>
+        </div>
+
+        <div class="footer-section footer-contact">
+          <h4>Contato</h4>
+          <div class="contact-info">
+            <div class="contact-item">
+              <ion-icon name="mail-outline"></ion-icon>
+              <span>{{email}}</span>
+            </div>
+            <div class="contact-item">
+              <ion-icon name="call-outline"></ion-icon>
+              <span>{{telefone}}</span>
+            </div>
+          </div>
+          <div class="footer-social">
+            <a href="#" class="social-link" title="LinkedIn" (click)="openLinkedIn()">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+            <a href="#" class="social-link" title="GitHub" (click)="openGitHub()">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+            <a href="#" class="social-link" title="WhatsApp" (click)="openWhatsApp()">
+              <ion-icon name="logo-whatsapp"></ion-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2025 {{nome}} - Desenvolvedor FullStack. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "pagina-profissional",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
